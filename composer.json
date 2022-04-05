@@ -25,7 +25,7 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Sign in With Apple",
+            "title": "Sign in with Apple",
             "category": "feature",
             "icon": {
                 "name": "fab fa-apple",
