@@ -12,10 +12,10 @@ fof-oauth:
 
   forum:
     log_in:
-      with_apple_button: '=> fof-oauth.forum.log_in.with_button'
+      with_apple_button: Sign in with {provider}
 
     providers:
-      apple: '=> fof-oauth.lib.providers.apple'
+      apple: "=> fof-oauth.lib.providers.apple"
 
   lib:
     providers:
