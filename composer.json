@@ -1,6 +1,6 @@
 {
     "name": "blomstra/oauth-apple",
-    "description": "Log in with Apple",
+    "description": "Sign in with Apple",
     "keywords": [
         "flarum"
     ],
@@ -25,7 +25,7 @@
     },
     "extra": {
         "flarum-extension": {
-            "title": "Log in With Apple",
+            "title": "Sign in With Apple",
             "category": "feature",
             "icon": {
                 "name": "fab fa-apple",
