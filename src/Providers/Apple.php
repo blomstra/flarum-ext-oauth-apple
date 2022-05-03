@@ -39,7 +39,6 @@ class Apple extends Provider
             'client_id'     => 'required',
             'team_id'        => 'required',
             'key_file_id'     => 'required',
-            'key_file_path' => 'required',
         ];
     }
 
