@@ -52,13 +52,13 @@ php flarum cache:clear
     - Keep the file safe for use in step 4.
 
 4. Fill in the following fields in the extension settings:
-        - `team_id`: This can be found on the top-right corner when logged into
+    - `team_id`: This can be found on the top-right corner when logged into
             your Apple Developer account, right under your name.
-        - `client_id`: This is the identifier from the Service Id created in step
+    - `client_id`: This is the identifier from the Service Id created in step
             2 above, for example com.example.service
-        - `key_id`: This is the identifier of the private key created in step 3
+    - `key_id`: This is the identifier of the private key created in step 3
             above.
-        - Upload the key file downloaded in step 3.
+    - Upload the key file downloaded in step 3.
 
 ## Sponsored
 
