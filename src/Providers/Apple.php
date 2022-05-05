@@ -60,7 +60,7 @@ class Apple extends Provider
     public function suggestions(Registration $registration, $user, string $token)
     {
         $email = $user->getEmail();
-        
+
         if (!empty($email)) {
             $this->verifyEmail($email);
 
