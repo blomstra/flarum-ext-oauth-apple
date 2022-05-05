@@ -8,7 +8,7 @@
     "license": "MIT",
     "require": {
         "flarum/core": "^1.2.0",
-        "fof/oauth": "^1.1.0",
+        "fof/oauth": "^1.2.1",
         "patrickbussmann/oauth2-apple": "^0.2.6"
     },
     "authors": [

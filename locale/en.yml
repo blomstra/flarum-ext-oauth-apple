@@ -7,7 +7,11 @@ fof-oauth:
 
           client_id_label: => fof-oauth.ref.settings.client_id
           key_file_id_label: Key File ID
-          key_file_path_label: Key File Path
+          keyfile_upload_label: Key File
+          keyfile_upload_help: Create a <a>keyfile</a> and upload it here
+          keyfile_upload:
+            upload_button: Upload keyfile
+            remove_button: Remove keyfile
           team_id_label: Team ID
 
   forum:
