@@ -16,7 +16,6 @@ use Flarum\Forum\Auth\Registration;
 use Flarum\Http\Exception\RouteNotFoundException;
 use FoF\Extend\Controllers\AbstractOAuthController;
 use FoF\OAuth\Errors\AuthenticationException;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\OAuth2\Client\Provider\AbstractProvider;
