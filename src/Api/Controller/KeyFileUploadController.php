@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of blomstra/oauth-apple.
+ *
+ * Copyright (c) 2022 Team Blomstra.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Blomstra\OAuthApple\Api\Controller;
 
 use Flarum\Api\Controller\ShowForumController;
@@ -39,10 +48,10 @@ class KeyFileUploadController extends ShowForumController
      * @var string
      */
     protected $filenamePrefix = 'apple-keyfile';
-    
+
     /**
      * @param SettingsRepositoryInterface $settings
-     * @param Factory $filesystemFactory
+     * @param Factory                     $filesystemFactory
      */
     public function __construct(SettingsRepositoryInterface $settings, Factory $filesystemFactory)
     {

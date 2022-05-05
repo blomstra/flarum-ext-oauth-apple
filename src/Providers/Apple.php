@@ -37,8 +37,8 @@ class Apple extends Provider
     public function fields(): array
     {
         return [
-            'client_id'     => 'required',
-            'team_id'        => 'required',
+            'client_id'       => 'required',
+            'team_id'         => 'required',
             'key_file_id'     => 'required',
         ];
     }
@@ -47,12 +47,12 @@ class Apple extends Provider
     {
         /** @var Paths $paths */
         $paths = resolve(Paths::class);
-        
+
         return $this->provider = new AppleProvider([
             'clientId'     => $this->getSetting('client_id'),
             'teamId'       => $this->getSetting('team_id'),
             'keyFileId'    => $this->getSetting('key_file_id'),
-            'keyFilePath' => "$paths->storage/oauth/applekey/" . $this->getSetting('key_file_path'),
+            'keyFilePath'  => "$paths->storage/oauth/applekey/".$this->getSetting('key_file_path'),
             'redirectUri'  => $redirectUri,
         ]);
     }

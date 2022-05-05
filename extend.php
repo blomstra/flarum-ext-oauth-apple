@@ -24,18 +24,18 @@ use FoF\OAuth\Extend as OAuthExtend;
 
 return [
     (new Extend\Frontend('forum'))
-        ->css(__DIR__ . '/less/forum.less'),
+        ->css(__DIR__.'/less/forum.less'),
 
     (new Extend\Frontend('admin'))
-        ->js(__DIR__ . '/js/dist/admin.js'),
+        ->js(__DIR__.'/js/dist/admin.js'),
 
-    new Extend\Locales(__DIR__ . '/locale'),
+    new Extend\Locales(__DIR__.'/locale'),
 
     (new Extend\Filesystem())
         ->disk('apple-keyfile', function (Paths $paths, UrlGenerator $url): array {
             return [
                 'root'   => "$paths->storage/oauth/applekey",
-                'url'    => $url->to('forum')->path('assets/keys')
+                'url'    => $url->to('forum')->path('assets/keys'),
             ];
         }),
 
