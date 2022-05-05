@@ -17,6 +17,7 @@ use Flarum\Http\Exception\RouteNotFoundException;
 use FoF\Extend\Controllers\AbstractOAuthController;
 use FoF\OAuth\Errors\AuthenticationException;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Laminas\Diactoros\Response\RedirectResponse;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
@@ -34,7 +35,7 @@ class ApplePostOAuthController extends AbstractOAuthController
      */
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
-        $name = Arr::get($request->getQueryParams(), 'provider');
+        $name = 'apple';
         $providers = resolve('container')->tagged('fof-oauth.providers');
 
         foreach ($providers as $provider) {
@@ -60,9 +61,13 @@ class ApplePostOAuthController extends AbstractOAuthController
             $provider = $this->getProvider($redirectUri);
 
             $session = $request->getAttribute('session');
-            $params = $request->getBody()->getContents();
-            $code = Arr::get($params, 'code');
-            $state = Arr::get($params, 'state');
+
+            $body = $request->getBody()->getContents();
+
+            $b = explode('&', $body);
+
+            $state = Str::after($b[0], 'state=');
+            $code = Str::after($b[1], 'code=');
 
             if (!$code) {
                 $authUrl = $provider->getAuthorizationUrl($this->getAuthorizationUrlOptions());

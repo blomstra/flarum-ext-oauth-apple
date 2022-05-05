@@ -68,6 +68,6 @@ class Apple extends Provider
 
     public function options(): array
     {
-        return ['scope' => 'email'];
+        return ['scope' => ['email']];
     }
 }
