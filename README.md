@@ -60,6 +60,9 @@ php flarum cache:clear
             above.
         - Upload the key file downloaded in step 3.
 
+## Sponsored
+
+The initial version of this extension was kindly sponsored by [Kagi Search](https://kegi.com) - an ad-free search engine
 ## Links
 
 - [Packagist](https://packagist.org/packages/blomstra/oauth-apple)
