@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of blomstra/oauth-apple.
+ *
+ * Copyright (c) 2022 Blomstra Ltd.
+ *
+ * For the full copyright and license information, please view the LICENSE.md
+ * file that was distributed with this source code.
+ */
+
 namespace Blomstra\OAuthApple\Api\Controller;
 
 use Exception;
@@ -42,7 +51,7 @@ class ApplePostOAuthController extends AbstractOAuthController
             throw new RouteNotFoundException();
         }
 
-        if (!(bool) (int) $this->settings->get('fof-oauth.' . $this->getProviderName())) {
+        if (!(bool) (int) $this->settings->get('fof-oauth.'.$this->getProviderName())) {
             throw new RouteNotFoundException();
         }
 
@@ -59,7 +68,7 @@ class ApplePostOAuthController extends AbstractOAuthController
                 $authUrl = $provider->getAuthorizationUrl($this->getAuthorizationUrlOptions());
                 $session->put('oauth2state', $provider->getState());
 
-                return new RedirectResponse($authUrl . '&display=popup');
+                return new RedirectResponse($authUrl.'&display=popup');
             } elseif (!$state || $state !== $session->get('oauth2state')) {
                 $session->remove('oauth2state');
 
@@ -87,7 +96,7 @@ class ApplePostOAuthController extends AbstractOAuthController
 
     protected function getRouteName(): string
     {
-        return 'auth.' . $this->getProviderName();
+        return 'auth.'.$this->getProviderName();
     }
 
     protected function getIdentifier($user): string
