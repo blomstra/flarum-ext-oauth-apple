@@ -11,6 +11,7 @@
 
 namespace Blomstra\OAuthApple;
 
+use Blomstra\OAuthApple\Api\Controller\ApplePostOAuthController;
 use Blomstra\OAuthApple\Api\Controller\DeleteKeyFileController;
 use Blomstra\OAuthApple\Api\Controller\KeyFileUploadController;
 use Blomstra\OAuthApple\Providers\Apple;
@@ -41,6 +42,12 @@ return [
     (new Extend\Routes('api'))
         ->post('/oauth/apple/keyfile', 'oauth.apple.keyfile.create', KeyFileUploadController::class)
         ->delete('/oauth/apple/keyfile', 'oauth.apple.keyfile.delete', DeleteKeyFileController::class),
+
+    (new Extend\Routes('forum'))
+        ->post('/auth/apple', 'oauth.apple.post', ApplePostOAuthController::class),
+
+    (new Extend\Csrf())
+        ->exemptRoute('oauth.apple.post'),
 
     (new OAuthExtend\RegisterProvider(Apple::class)),
 ];
