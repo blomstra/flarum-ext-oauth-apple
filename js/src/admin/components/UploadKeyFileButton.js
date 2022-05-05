@@ -8,13 +8,15 @@ export default class UploadKeyFileButton extends Button {
     this.attrs.loading = this.loading;
     this.attrs.className = (this.attrs.className || '') + ' Button';
 
-    if (app.data.settings[this.attrs.name + '_path']) {
+    const keyFilePath = app.data.settings['fof-oauth.apple.key_file_path'];
+
+    if (keyFilePath) {
       this.attrs.onclick = this.remove.bind(this);
 
       return (
         <div>
           <p>
-            <img src={app.forum.attribute(this.attrs.name + 'Url')} alt="" />
+            <code>{keyFilePath}</code>
           </p>
           <p>{super.view({ ...vnode, children: app.translator.trans('fof-oauth.admin.settings.providers.apple.keyfile_upload.remove_button') })}</p>
         </div>
@@ -72,7 +74,7 @@ export default class UploadKeyFileButton extends Button {
   }
 
   resourceUrl() {
-    return app.forum.attribute('apiUrl') + '/' + this.attrs.name;
+    return app.forum.attribute('apiUrl') + '/oauth/apple/keyfile';
   }
 
   /**

@@ -11,8 +11,12 @@
 
 namespace Blomstra\OAuthApple;
 
+use Blomstra\OAuthApple\Api\Controller\DeleteKeyFileController;
+use Blomstra\OAuthApple\Api\Controller\KeyFileUploadController;
 use Blomstra\OAuthApple\Providers\Apple;
 use Flarum\Extend;
+use Flarum\Foundation\Paths;
+use Flarum\Http\UrlGenerator;
 use FoF\OAuth\Extend as OAuthExtend;
 
 // $leeway is needed for clock skew
@@ -20,12 +24,24 @@ use FoF\OAuth\Extend as OAuthExtend;
 
 return [
     (new Extend\Frontend('forum'))
-        ->css(__DIR__.'/less/forum.less'),
+        ->css(__DIR__ . '/less/forum.less'),
 
     (new Extend\Frontend('admin'))
-        ->js(__DIR__.'/js/dist/admin.js'),
+        ->js(__DIR__ . '/js/dist/admin.js'),
 
-    new Extend\Locales(__DIR__.'/locale'),
+    new Extend\Locales(__DIR__ . '/locale'),
+
+    (new Extend\Filesystem())
+        ->disk('apple-keyfile', function (Paths $paths, UrlGenerator $url): array {
+            return [
+                'root'   => "$paths->storage/oauth/applekey",
+                'url'    => $url->to('forum')->path('assets/keys')
+            ];
+        }),
+
+    (new Extend\Routes('api'))
+        ->post('/oauth/apple/keyfile', 'oauth.apple.keyfile.create', KeyFileUploadController::class)
+        ->delete('/oauth/apple/keyfile', 'oauth.apple.keyfile.delete', DeleteKeyFileController::class),
 
     (new OAuthExtend\RegisterProvider(Apple::class)),
 ];

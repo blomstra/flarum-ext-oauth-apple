@@ -12,9 +12,11 @@ export default function ExtendOAuthSettings() {
       <div className="Form-group">
         <fieldset>
           <legend>{app.translator.trans('fof-oauth.admin.settings.providers.apple.keyfile_upload_label')}</legend>
-          <div className="helpText">{app.translator.trans('fof-oauth.admin.settings.providers.apple.keyfile_upload_help', {
-              a: <a href='https://developer.apple.com/account/resources/authkeys/list' target='_blank'/>
-          })}</div>
+          <div className="helpText">
+            {app.translator.trans('fof-oauth.admin.settings.providers.apple.keyfile_upload_help', {
+              a: <a href="https://developer.apple.com/account/resources/authkeys/list" target="_blank" />,
+            })}
+          </div>
           <UploadKeyFileButton name="apple-keyfile" />
         </fieldset>
       </div>,
