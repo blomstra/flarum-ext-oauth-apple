@@ -73,9 +73,7 @@ class ApplePostOAuthController extends AbstractOAuthController
                 $session->put('oauth2state', $provider->getState());
 
                 return new RedirectResponse($authUrl.'&display=popup');
-            } elseif (!$state || $state !== $session->get('oauth2state')) {
-                $session->remove('oauth2state');
-
+            } elseif (!$state) {
                 throw new Exception('Invalid state');
             }
 
@@ -100,7 +98,7 @@ class ApplePostOAuthController extends AbstractOAuthController
 
     protected function getRouteName(): string
     {
-        return 'auth.'.$this->getProviderName();
+        return 'oauth.apple.post';
     }
 
     protected function getIdentifier($user): string

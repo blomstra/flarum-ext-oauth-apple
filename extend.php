@@ -46,5 +46,8 @@ return [
     (new Extend\Routes('forum'))
         ->post('/auth/apple', 'oauth.apple.post', ApplePostOAuthController::class),
 
+    (new Extend\Csrf())
+        ->exemptRoute('oauth.apple.post'),
+
     (new OAuthExtend\RegisterProvider(Apple::class)),
 ];

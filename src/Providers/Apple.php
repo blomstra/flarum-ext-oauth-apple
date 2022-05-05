@@ -59,11 +59,16 @@ class Apple extends Provider
 
     public function suggestions(Registration $registration, $user, string $token)
     {
-        $this->verifyEmail($email = $user->getEmail());
+        if ($email = $user->getEmail() && !empty($email)) {
+            $this->verifyEmail($email);
 
-        $registration
+            $registration
             ->provideTrustedEmail($email)
             ->setPayload($user->toArray());
+        } else {
+            $registration
+            ->setPayload($user->toArray());
+        }
     }
 
     public function options(): array
