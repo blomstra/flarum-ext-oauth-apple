@@ -66,5 +66,5 @@ The initial version of this extension was kindly sponsored by [Kagi Search](http
 ## Links
 
 - [Packagist](https://packagist.org/packages/blomstra/oauth-apple)
-- [GitHub](https://github.com/blomstra/oauth-apple)
+- [GitHub](https://github.com/blomstra/flarum-ext-oauth-apple)
 - [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)

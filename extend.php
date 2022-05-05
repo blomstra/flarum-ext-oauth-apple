@@ -35,7 +35,6 @@ return [
         ->disk('apple-keyfile', function (Paths $paths, UrlGenerator $url): array {
             return [
                 'root'   => "$paths->storage/oauth/applekey",
-                'url'    => $url->to('forum')->path('assets/keys'),
             ];
         }),
 
