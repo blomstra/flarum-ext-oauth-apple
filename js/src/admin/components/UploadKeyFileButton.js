@@ -29,7 +29,7 @@ export default class UploadKeyFileButton extends Button {
   }
 
   /**
-   * Prompt the user to upload an image.
+   * Prompt the user to upload the key file.
    */
   upload() {
     if (this.loading) return;
@@ -59,7 +59,7 @@ export default class UploadKeyFileButton extends Button {
   }
 
   /**
-   * Remove the logo.
+   * Remove the key file.
    */
   remove() {
     this.loading = true;

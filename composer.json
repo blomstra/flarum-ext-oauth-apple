@@ -2,7 +2,7 @@
     "name": "blomstra/oauth-apple",
     "description": "Sign in with Apple",
     "keywords": [
-        "flarum"
+        "flarum", "apple", "oauth", "sso"
     ],
     "type": "flarum-extension",
     "license": "MIT",
