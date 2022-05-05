@@ -65,4 +65,9 @@ class Apple extends Provider
             ->provideTrustedEmail($email)
             ->setPayload($user->toArray());
     }
+
+    public function options(): array
+    {
+        return ['scope' => 'email'];
+    }
 }
