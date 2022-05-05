@@ -62,7 +62,7 @@ php flarum cache:clear
 
 ## Sponsored
 
-The initial version of this extension was kindly sponsored by [Kagi Search](https://kegi.com) - an ad-free search engine
+The initial version of this extension was kindly sponsored by [Kagi Search](https://kagi.com) - an ad-free search engine
 ## Links
 
 - [Packagist](https://packagist.org/packages/blomstra/oauth-apple)
