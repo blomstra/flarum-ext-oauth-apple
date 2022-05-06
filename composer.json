@@ -6,6 +6,12 @@
     ],
     "type": "flarum-extension",
     "license": "MIT",
+    "homepage": "https://blomstra.net",
+    "support": {
+        "source": "https://github.com/blomstra/flarum-ext-oauth-apple",
+        "issues": "https://github.com/blomstra/flarum-ext-oauth-apple/issues",
+        "email": "helpdesk@blomstra.net"
+    },
     "require": {
         "flarum/core": "^1.2.0",
         "fof/oauth": "^1.2.2",
