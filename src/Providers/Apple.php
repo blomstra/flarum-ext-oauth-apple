@@ -11,9 +11,13 @@
 
 namespace Blomstra\OAuthApple\Providers;
 
+use Exception;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Foundation\Paths;
 use FoF\OAuth\Provider;
+use Illuminate\Contracts\Filesystem\Factory;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use League\Flysystem\Adapter\Local;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Apple as AppleProvider;
 
@@ -50,14 +54,11 @@ class Apple extends Provider
 
     public function provider(string $redirectUri): AbstractProvider
     {
-        /** @var Paths $paths */
-        $paths = resolve(Paths::class);
-
         return $this->provider = new AppleProvider([
             'clientId'     => $this->getSetting('client_id'),
             'teamId'       => $this->getSetting('team_id'),
             'keyFileId'    => $this->getSetting('key_file_id'),
-            'keyFilePath'  => "$paths->storage/oauth/applekey/".$this->getSetting('key_file_path'),
+            'keyFilePath'  => $this->getKeyFilePath(),
             'redirectUri'  => $redirectUri,
         ]);
     }
@@ -81,5 +82,45 @@ class Apple extends Provider
     public function options(): array
     {
         return ['scope' => ['email']];
+    }
+
+    /**
+     * The Apple provider expects a path to a key file. Depending on if the Filesystem is local or remote, we need to
+     * either return the local path, or create a temporary file and return the path to that file.
+     *
+     * @return string
+     */
+    private function getKeyFilePath(): string
+    {
+        $keyFileSetting = $this->getSetting('key_file_path');
+
+        if (empty($keyFileSetting)) {
+            throw new \Exception('Apple key file path is not set.');
+        }
+        
+        /** @var Paths $paths */
+        $paths = resolve(Paths::class);
+
+        /** @var Factory $filesystemFactory */
+        $filesystemFactory = resolve(Factory::class);
+
+        /** @var Filesystem $filesystem */
+        $filesystem = $filesystemFactory->disk('apple-keyfile');
+
+        // If we're using local storage, we can just use the key file directly.
+        if ($filesystem instanceof Local) {
+            if (file_exists($localPath = "$paths->storage/oauth/applekey/".$keyFileSetting)) {
+                return $localPath;
+            }
+            
+            throw new \Exception('Apple key file does not exist.');
+        }
+
+        // Otherwise, we'll have to fetch it from the Filesystem adapter.
+        $keyfileContents = $filesystem->get($keyFileSetting);
+        $tmpPath = "$paths->storage/tmp/applekey.txt";
+        file_put_contents($tmpPath, $keyfileContents);
+
+        return $tmpPath;
     }
 }
