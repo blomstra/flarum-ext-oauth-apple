@@ -14,6 +14,7 @@ namespace Blomstra\OAuthApple\Providers;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Foundation\Paths;
 use FoF\OAuth\Provider;
+use Illuminate\Contracts\Filesystem\Factory;
 use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Apple as AppleProvider;
 
@@ -50,14 +51,16 @@ class Apple extends Provider
 
     public function provider(string $redirectUri): AbstractProvider
     {
-        /** @var Paths $paths */
-        $paths = resolve(Paths::class);
+        /** @var Factory $filesystemFactory */
+        $filesystemFactory = resolve(Factory::class);
+
+        $filesystem = $filesystemFactory->disk('apple-keyfile');
 
         return $this->provider = new AppleProvider([
             'clientId'     => $this->getSetting('client_id'),
             'teamId'       => $this->getSetting('team_id'),
             'keyFileId'    => $this->getSetting('key_file_id'),
-            'keyFilePath'  => "$paths->storage/oauth/applekey/".$this->getSetting('key_file_path'),
+            'keyFilePath'  => $filesystem->get($this->getSetting('key_file_path')),
             'redirectUri'  => $redirectUri,
         ]);
     }
