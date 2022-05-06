@@ -43,6 +43,11 @@ class Apple extends Provider
         ];
     }
 
+    public function priority(): int
+    {
+        return 100;
+    }
+
     public function provider(string $redirectUri): AbstractProvider
     {
         /** @var Paths $paths */
