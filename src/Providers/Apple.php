@@ -12,7 +12,6 @@
 namespace Blomstra\OAuthApple\Providers;
 
 use Flarum\Forum\Auth\Registration;
-use Flarum\Foundation\Paths;
 use FoF\OAuth\Provider;
 use Illuminate\Contracts\Filesystem\Factory;
 use League\OAuth2\Client\Provider\AbstractProvider;
