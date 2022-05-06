@@ -11,7 +11,6 @@
 
 namespace Blomstra\OAuthApple\Providers;
 
-use Exception;
 use Flarum\Forum\Auth\Registration;
 use Flarum\Foundation\Paths;
 use FoF\OAuth\Provider;
@@ -97,7 +96,7 @@ class Apple extends Provider
         if (empty($keyFileSetting)) {
             throw new \Exception('Apple key file path is not set.');
         }
-        
+
         /** @var Paths $paths */
         $paths = resolve(Paths::class);
 
@@ -112,7 +111,7 @@ class Apple extends Provider
             if (file_exists($localPath = "$paths->storage/oauth/applekey/".$keyFileSetting)) {
                 return $localPath;
             }
-            
+
             throw new \Exception('Apple key file does not exist.');
         }
 
