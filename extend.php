@@ -47,7 +47,8 @@ return [
         ->post('/auth/apple', 'oauth.apple.post', ApplePostOAuthController::class),
 
     (new Extend\Csrf())
-        ->exemptRoute('oauth.apple.post'),
+        ->exemptRoute('oauth.apple.post')
+        ->exemptRoute('register'),
 
     (new OAuthExtend\RegisterProvider(Apple::class)),
 ];
