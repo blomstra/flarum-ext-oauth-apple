@@ -67,4 +67,4 @@ The initial version of this extension was kindly sponsored by [Kagi Search](http
 
 - [Packagist](https://packagist.org/packages/blomstra/oauth-apple)
 - [GitHub](https://github.com/blomstra/flarum-ext-oauth-apple)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [Discuss](https://discuss.flarum.org/d/31938-blomstra-sign-in-with-apple)
