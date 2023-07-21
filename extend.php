@@ -50,5 +50,5 @@ return [
         ->exemptRoute('oauth.apple.post')
         ->exemptRoute('register'),
 
-    (new OAuthExtend\RegisterProvider(Apple::class)),
+    new OAuthExtend\RegisterProvider(Apple::class),
 ];
